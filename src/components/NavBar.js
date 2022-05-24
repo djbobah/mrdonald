@@ -4,18 +4,18 @@ import logoImg from "../images/logo.svg";
 import loginImg from "../images/sign.svg";
 
 const NavBarStyled = styled.header`
-position:fixed;
-top:0
-left:0;
-z-index:999;
-height:80px;
-width:100vw;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px;
-background-color:#299B01;
-color:white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 80px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #299b01;
+  color: white;
 `;
 const Logo = styled.div`
   display: flex;
