@@ -19,6 +19,11 @@ body {
   font-size:20px;
   color:black;
 }
+img { 
+  max-width:100%;
+  height:auto;
+}
+
 a {
   text-decoration:none;
   color:inherit;
