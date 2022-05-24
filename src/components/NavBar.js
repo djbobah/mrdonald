@@ -32,7 +32,6 @@ const Login = styled.button`
   color: white;
   background-color: inherit;
   border: none;
-  cursor: pointer;
 `;
 const ImgLogin = styled.img`
   width: 40px;
