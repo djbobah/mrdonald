@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "./Button";
 
 const Overlay = styled.div`
   position: fixed;
@@ -21,21 +22,41 @@ const Modal = styled.div`
 
 const Banner = styled.div`
   width: 100%;
-  height: 200 px;
+  height: 200px;
 
-  background-image: url(${img});
+  background-image: url(${({ img }) => img});
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;
 `;
 
+const PriceWrap = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
 export const ModalItem = ({ openItem, setOpenItem }) => {
+  const closeModal = (e) => {
+    if (e.target.id === "overlay") {
+      setOpenItem(null);
+    }
+  };
+
   if (!openItem) return null;
   return (
-    <Overlay>
+    <Overlay id="overlay" onClick={closeModal}>
       <Modal>
-        <Banner img={img} />
-        TEST
+        <Banner img={openItem.img} />
+        <PriceWrap>
+          <h1>{openItem.name}</h1>{" "}
+          <h1>
+            {openItem.price.toLocaleString("ru-RU", {
+              style: "currency",
+              currency: "RUB",
+            })}
+          </h1>
+        </PriceWrap>
+        <Button text="Добавить" />
       </Modal>
     </Overlay>
   );
