@@ -7,6 +7,8 @@ import {
   totalPriceItems,
   formatCurrency,
 } from "../Functions/secondaryFunction";
+import { Toppings } from "./Toppings";
+import { useToppings } from "../Hooks/useToppings";
 
 const Overlay = styled.div`
   position: fixed;
@@ -57,13 +59,18 @@ const TotalPriceItem = styled.div`
 
 export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
   const counter = useCount();
+  const toppings = useToppings(openItem);
 
   const closeModal = (e) => {
     if (e.target.id === "overlay") {
       setOpenItem(null);
     }
   };
-  const order = { ...openItem, count: counter.count };
+  const order = {
+    ...openItem,
+    count: counter.count,
+    topping: toppings.toppings,
+  };
 
   const addToOrder = () => {
     setOrders([...orders, order]);
@@ -80,6 +87,8 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
             <div>{formatCurrency(openItem.price)}</div>
           </HeaderContent>
           <CountItem {...counter} />
+          {openItem.toppings && <Toppings {...toppings} />}
+
           <TotalPriceItem>
             <span>Цена:</span>
             <span>{formatCurrency(totalPriceItems(order))}</span>
