@@ -51,8 +51,10 @@ const EmptyList = styled.p`
 
 export const Order = ({ orders, setOrders, setOpenItem }) => {
   const deleteItem = (index) => {
+    // первый вариант
     // const newOrders = [...orders];
     // newOrders.splice(index, 1);
+    //
     // второй вариант
     const newOrders = orders.filter((item, i) => index !== i);
     setOrders(newOrders);
